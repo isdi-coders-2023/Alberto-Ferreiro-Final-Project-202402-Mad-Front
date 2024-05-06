@@ -1,0 +1,29 @@
+@if(!this.isRegistered){
+<div class="register-box">
+  <h1>Registro</h1>
+  <div class="welcome">Bienvenido</div>
+  <div class="divider"></div>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <input formControlName="email" type="email" placeholder="Email" />
+    <input formControlName="name" type="name" placeholder="Nombre" />
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    />
+    <input formControlName="age" type="age" placeholder="Edad" />
+    <input
+      formControlName="licenseYear"
+      type="licenseYear"
+      placeholder="Año en que obtuvo el carnet"
+    />
+    <button type="submit">Registrarse</button>
+  </form>
+</div>
+
+} @else {
+<div class="home">
+  <h1>Bienvenido</h1>
+  <p>Registro completado con éxito</p>
+</div>
+}

@@ -9,7 +9,7 @@ export type UserRegisterDto = {
   name: string;
   email: string;
   age: number;
-  licenseYear: string;
+  licenseYear: number;
   password: string;
 };
 

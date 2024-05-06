@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { UserLoginDto } from '../models/user.model';
+import { UserLoginDto, UserRegisterDto } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,9 @@ export class UsersRepoService {
   login(data: UserLoginDto) {
     return this.http.post<{ token: string }>(this.url + '/login', data);
   }
-  register(data: FormData) {
-    const url = this.url + '/register';
-    return this.http.post(url, data);
+  register(data: UserRegisterDto) {
+    console.log('en el repo:', data);
+    return this.http.post(this.url + '/register', data);
   }
   getById(id: string) {
     return this.http.get(this.url + '/' + id);
