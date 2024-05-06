@@ -1,0 +1,29 @@
+@if(this.state.state.loginState !== 'logged'){
+<div class="register-box">
+  <h1>Registro</h1>
+  <div class="welcome">Bienvenido</div>
+  <div class="divider"></div>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <input formControlName="email" type="email" placeholder="Email" />
+    <input formControlName="name" type="name" placeholder="Nombre" />
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    />
+    <input formControlName="age" type="age" placeholder="Introduzca su edad" />
+    <input
+      formControlName="licenseYear"
+      type="licenseYear"
+      placeholder="Año en que obtuvo en carnet"
+    />
+    <button type="submit">Entrar</button>
+  </form>
+</div>
+
+} @else {
+<div class="home">
+  <h1>Bienvenido</h1>
+  <p>Estás logado</p>
+</div>
+}
