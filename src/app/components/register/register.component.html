@@ -1,4 +1,4 @@
-@if(this.state.state.loginState !== 'logged'){
+@if(!this.isRegistered){
 <div class="register-box">
   <h1>Registro</h1>
   <div class="welcome">Bienvenido</div>
@@ -11,19 +11,19 @@
       type="password"
       placeholder="Contraseña"
     />
-    <input formControlName="age" type="age" placeholder="Introduzca su edad" />
+    <input formControlName="age" type="age" placeholder="Edad" />
     <input
       formControlName="licenseYear"
       type="licenseYear"
-      placeholder="Año en que obtuvo en carnet"
+      placeholder="Año en que obtuvo el carnet"
     />
-    <button type="submit">Entrar</button>
+    <button type="submit">Registrarse</button>
   </form>
 </div>
 
 } @else {
 <div class="home">
   <h1>Bienvenido</h1>
-  <p>Estás logado</p>
+  <p>Registro completado con éxito</p>
 </div>
 }

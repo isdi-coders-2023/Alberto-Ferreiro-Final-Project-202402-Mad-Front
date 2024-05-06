@@ -82,12 +82,19 @@ describe('RepoService', () => {
       const mockFormData = new FormData();
       mockFormData.append('email', 'pepe@pepito.com');
       mockFormData.append('password', 'newpassword');
+      const mockRegistrar = {
+        name: 'Axl',
+        email: 'test@mail.com',
+        age: 30,
+        licenseYear: 2014,
+        password: '1234',
+      };
 
       const response = { message: 'User registered successfully' };
 
       httpClientMock.post.and.returnValue(of(response));
 
-      service.register(mockFormData).subscribe({
+      service.register(mockRegistrar).subscribe({
         next: (data) => {
           expect(data).toEqual(response);
         },
@@ -95,7 +102,7 @@ describe('RepoService', () => {
 
       expect(httpClientMock.post).toHaveBeenCalledWith(
         service.url + '/register',
-        mockFormData
+        mockRegistrar
       );
     });
   });
