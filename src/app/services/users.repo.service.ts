@@ -10,6 +10,7 @@ export class UsersRepoService {
   constructor(private http: HttpClient) {}
   url = environment.apiUrl + '/users';
   login(data: UserLoginDto) {
+    console.log('en el repo:', data);
     return this.http.post<{ token: string }>(this.url + '/login', data);
   }
   register(data: UserRegisterDto) {

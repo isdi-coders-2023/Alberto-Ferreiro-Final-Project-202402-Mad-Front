@@ -4,18 +4,42 @@ import {
   fakeAsync,
   tick,
 } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersRepoService } from '../../services/users.repo.service';
+import LoginComponent from './login.component';
+import { StateService } from '../../services/state.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   const httpClientMock = {
     get: jasmine.createSpy('get').and.returnValue(of()),
+  };
+  const stateServiceMock = {
+    setLogin: jasmine
+      .createSpy('setLogin')
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .and.callFake(function (token: string) {
+        stateServiceMock.state.loginState = 'logged';
+      }),
+    setLoginState: jasmine
+      .createSpy('setLoginState')
+      .and.callFake(function (state: string) {
+        stateServiceMock.state.loginState = state;
+      }),
+    state: {
+      loginState: 'idle',
+    },
+    getState: () =>
+      of({
+        loginState: stateServiceMock.state.loginState,
+        token: null,
+        currentPayload: null,
+        currentUser: null,
+        policies: [],
+      }),
   };
   const repoServiceMock = {
     login: jasmine.createSpy('login').and.returnValue(
@@ -40,6 +64,7 @@ describe('LoginComponent', () => {
           useValue: httpClientMock,
         },
         { provide: UsersRepoService, useValue: repoServiceMock },
+        { provide: StateService, useValue: stateServiceMock },
       ],
     }).compileComponents();
 
@@ -47,66 +72,48 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   afterEach(() => {
     repoServiceMock.login.calls.reset();
+    stateServiceMock.setLogin.calls.reset();
+    stateServiceMock.setLoginState.calls.reset();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('should have form inputs valid when correct data is provided', () => {
     const emailInput = component.loginForm.controls['email'];
     const passwordInput = component.loginForm.controls['password'];
-    const confirmPasswordInput =
-      component.loginForm.controls['confirmPassword'];
 
     emailInput.setValue('test@example.com');
     passwordInput.setValue('12345');
-    confirmPasswordInput.setValue('12345');
     expect(component.loginForm.valid).toBeTruthy();
   });
 
-  it('should not login when passwords do not match', () => {
-    component.loginForm.controls['email'].setValue('test@example.com');
-    component.loginForm.controls['password'].setValue('12345');
-    component.loginForm.controls['confirmPassword'].setValue('123456');
-    fixture.detectChanges();
-    component.onLogin();
-    expect(component.passCheck).toBeFalsy();
-    expect(repoServiceMock.login.calls.any()).toBeFalse();
-  });
   it('should call login service on valid form submission', () => {
     component.loginForm.controls['email'].setValue('user@example.com');
     component.loginForm.controls['password'].setValue('password');
-    component.loginForm.controls['confirmPassword'].setValue('password');
     component.onLogin();
-    expect(component.passCheck).toBeTruthy();
     expect(repoServiceMock.login).toHaveBeenCalledOnceWith({
       email: 'user@example.com',
       password: 'password',
     });
   });
-  it('should set login state on successful login', fakeAsync(() => {
+
+  it('should handle login errors', fakeAsync(() => {
+    repoServiceMock.login.and.returnValue(
+      throwError({ error: 'Invalid credentials' })
+    );
+
     component.loginForm.controls['email'].setValue('user@example.com');
-    component.loginForm.controls['password'].setValue('password');
-    component.loginForm.controls['confirmPassword'].setValue('password');
+    component.loginForm.controls['password'].setValue('wrongpassword');
     component.onLogin();
 
     tick();
 
-    expect(component.getLoginState()).toEqual('logged');
+    expect(stateServiceMock.setLoginState).toHaveBeenCalledWith('error');
+    expect(stateServiceMock.state.loginState).toEqual('error');
   }));
-  it('should display an error message when passwords do not match', () => {
-    component.loginForm.controls['email'].setValue('test@example.com');
-    component.loginForm.controls['password'].setValue('12345');
-    component.loginForm.controls['confirmPassword'].setValue('123456');
-    fixture.detectChanges();
-
-    component.onLogin();
-    fixture.detectChanges();
-
-    const errorMsg = fixture.nativeElement.querySelector('.wrong-pass');
-    expect(errorMsg).toBeTruthy();
-    expect(errorMsg.innerText).toContain('Las contraseñas deben coincidir');
-  });
 });

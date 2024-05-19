@@ -1,0 +1,30 @@
+.hero {
+  background-color: #ffbd00;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  h2 {
+    padding-block: 0.5rem;
+    margin-inline: 3rem;
+    font-weight: 200;
+  }
+  p {
+    margin-inline: 25%;
+    padding-bottom: 0.5rem;
+  }
+}
+.banner-img,
+.app-hook {
+  width: 100%;
+}
+
+.app-hook {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding-block: 1rem;
+}
+
+.download-links {
+  display: flex;
+  justify-content: space-around;
+}

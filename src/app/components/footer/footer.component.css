@@ -1,0 +1,32 @@
+footer {
+  background-color: #383838;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding-bottom: 10px;
+  a {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    font-weight: 200;
+  }
+  ul {
+    list-style: circle;
+    color: white;
+    gap: 1rem;
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  img {
+    padding-inline: 0.5rem;
+  }
+  .footer-icons {
+    display: flex;
+    align-content: center;
+  }
+}

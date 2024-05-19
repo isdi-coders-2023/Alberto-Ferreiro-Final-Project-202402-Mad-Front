@@ -1,0 +1,61 @@
+<div class="policy-create-box">
+  @if(price === null) {
+  <h1>Crea tu póliza</h1>
+  <div class="divider"></div>
+  @if(policyName === ''){
+  <form [formGroup]="policyForm" (ngSubmit)="onCalculatePrice()">
+    <select formControlName="policyType">
+      <option value="" disabled selected>Selecciona tipo de póliza</option>
+      <option value="auto">Auto</option>
+      <option value="moto">Moto</option>
+    </select>
+    <input formControlName="carMake" type="text" placeholder="Marca" />
+    <input formControlName="carModel" type="text" placeholder="Modelo" />
+    <input
+      formControlName="carAge"
+      type="number"
+      placeholder="Antigüedad del vehículo"
+      min="0"
+    />
+    <input formControlName="plateNumber" type="text" placeholder="Matrícula" />
+    <button type="submit">Calcular Precio</button>
+  </form>
+  } @else{
+  <form [formGroup]="policyForm" (ngSubmit)="onCalculatePrice()">
+    <input
+      formControlName="policyName"
+      type="text"
+      placeholder="Nombre de la póliza"
+      readonly
+    />
+    <select formControlName="policyType">
+      <option value="" disabled selected>Selecciona tipo de póliza</option>
+      <option value="auto">Auto</option>
+      <option value="moto">Moto</option>
+    </select>
+    <input formControlName="carMake" type="text" placeholder="Marca" />
+    <input formControlName="carModel" type="text" placeholder="Modelo" />
+    <input
+      formControlName="carAge"
+      type="number"
+      placeholder="Antigüedad del vehículo"
+      min="0"
+    />
+    <input formControlName="plateNumber" type="text" placeholder="Matrícula" />
+    <button type="submit">Calcular Precio</button>
+  </form>
+  } } @if(price !== null) {
+  <div class="priceDisplay">
+    <p>Precio Calculado: {{ price }} €</p>
+    @if(isLoggedIn) {
+    <button (click)="onCreatePolicy()">Crear Póliza</button>
+    } @if(!isLoggedIn) {
+    <div class="login-message">
+      <p>Debes estar logado para comprar la póliza</p>
+      <a routerLink="/login">Iniciar Sesión</a> |
+      <a routerLink="/register">Registrarse</a>
+    </div>
+    }
+  </div>
+  }
+</div>

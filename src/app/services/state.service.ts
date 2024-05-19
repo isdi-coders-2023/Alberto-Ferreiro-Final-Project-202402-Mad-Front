@@ -8,7 +8,6 @@ import { PoliciesRepoService } from './policies.repo.service';
 type LoginState = 'idle' | 'logging' | 'logged' | 'error';
 export type Payload = {
   id: string;
-  role: string;
 } & JwtPayload;
 
 export type State = {
@@ -69,8 +68,6 @@ export class StateService {
         currentPayload,
         currentUser: user,
       });
-      console.log('Usuario logado');
-      console.log(this.state.loginState);
     });
   }
   setLogout() {
@@ -84,6 +81,11 @@ export class StateService {
   }
   getPolicies() {
     this.polRepo.getPolicies().subscribe((policies) => {
+      this.state$.next({ ...this.state$.value, policies });
+    });
+  }
+  getUserPolicies(userId: string) {
+    this.polRepo.getUserPolicies(userId).subscribe((policies) => {
       this.state$.next({ ...this.state$.value, policies });
     });
   }

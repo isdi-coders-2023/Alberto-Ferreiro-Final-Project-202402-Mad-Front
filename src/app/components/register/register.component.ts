@@ -16,9 +16,10 @@ import { UserRegisterDto } from '../../models/user.model';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export default class RegisterComponent {
   registerForm: FormGroup;
-  isRegistered: boolean;
+  registryError: boolean;
+  error: Error;
   constructor(
     private builder: FormBuilder,
     private repo: UsersRepoService,
@@ -31,7 +32,12 @@ export class RegisterComponent {
       age: ['', Validators.required],
       licenseYear: ['', [Validators.required]],
     });
-    this.isRegistered = false;
+    this.registryError = false;
+    this.error = {
+      name: 'string',
+      message: 'string',
+      stack: 'string',
+    };
   }
   onRegister() {
     if (this.registerForm.valid) {
@@ -46,18 +52,18 @@ export class RegisterComponent {
       };
       newUser.age = parseInt(age);
       newUser.licenseYear = parseInt(licenseYear);
-      console.log('en el register', newUser);
       this.repo.register(newUser).subscribe({
         next: (user) => {
           console.log('Usuario creado:', user);
-          this.isRegistered = true;
+          this.registryError = false;
         },
         error: (err) => {
-          console.error('Register error', err);
-          this.isRegistered = false;
+          this.registryError = true;
+          this.error = err;
         },
       });
     } else {
+      this.registryError = true;
       console.log('Datos de registro incorrectos');
     }
   }

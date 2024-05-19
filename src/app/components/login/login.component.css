@@ -4,6 +4,7 @@
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
+  margin: 0;
 }
 
 .login-box {
@@ -15,7 +16,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.home {
+.login-success {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
@@ -29,14 +30,8 @@
   color: #333;
   text-align: center;
 }
-.home h1,
+.login-success h1,
 p {
-  margin-top: 0;
-  color: #333;
-  text-align: center;
-}
-
-.wrong-pass h1 {
   margin-top: 0;
   color: #333;
   text-align: center;
@@ -55,15 +50,21 @@ p {
 }
 
 .login-box input {
-  width: 100%;
+  width: 90%;
   padding: 8px;
-  margin: 10px 0;
+  margin: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #dddddd;
 }
 
+.login-box img {
+  padding-inline: 25%;
+  margin-top: 1rem;
+}
+
 .login-box button {
+  margin-top: 1rem;
   width: 100%;
   padding: 10px;
   border: none;
@@ -71,7 +72,7 @@ p {
   color: black;
   font-weight: bold;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 

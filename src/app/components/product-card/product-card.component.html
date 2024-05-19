@@ -1,0 +1,29 @@
+@if(card){
+<div *ngIf="card" class="card">
+  <p class="bottom-price" [ngClass]="getPriceClass(card.name)">
+    Desde {{ card.bottomPrice }} € al año
+  </p>
+  <div class="icon">
+    @if(card.policyType === 'auto'){
+    <img src="../../../assets/car-icon.svg" alt="Auto Icon" />} @else {
+    <img src="../../../assets/motorbike-icon.svg" alt="Motorbike Icon" />
+    }
+  </div>
+  <h2>{{ card.name }}</h2>
+
+  <p class="payment">{{ card.payment }}</p>
+
+  <div class="separator"></div>
+  <ul class="policy-features">
+    <li>
+      <p class="coverage">{{ card.coverage }}</p>
+    </li>
+    <li>
+      <p class="assistance">{{ card.assistance }}</p>
+    </li>
+  </ul>
+
+  <app-pricebutton [card]="this.card"></app-pricebutton>
+</div>
+
+}
