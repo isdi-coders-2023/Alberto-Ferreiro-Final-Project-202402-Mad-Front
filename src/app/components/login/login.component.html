@@ -5,31 +5,23 @@
   <div class="divider"></div>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <input formControlName="email" type="email" placeholder="Email" />
-
     <input
       formControlName="password"
       type="password"
       placeholder="Contraseña"
     />
-    <input
-      formControlName="confirmPassword"
-      type="password"
-      placeholder="Repite tu contraseña"
-    />
-
     <button type="submit">Entrar</button>
   </form>
-</div>
-
-<div>
-  @if (!this.passCheck) {
-  <div class="wrong-pass"><p>Las contraseñas deben coincidir</p></div>
-  }
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <img
+    src="../../../assets/norton-seal.svg"
+    alt="Sello de seguridad de Norton"
+    class="norton-logo"
+  />
 </div>
 } @else {
-<div class="home">
+<div class="login-success">
   <h1>Bienvenido</h1>
   <p>Estás logado</p>
 </div>
-
 }

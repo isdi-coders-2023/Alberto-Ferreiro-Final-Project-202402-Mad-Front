@@ -1,0 +1,47 @@
+@if (this.menuVisible) {
+<img
+  src="../../../assets/burger-menu.svg"
+  alt="Menú de la aplicación"
+  aria-label="app-menu"
+  width="50px"
+  class="burger-icon"
+  (click)="toggleMenu()"
+  (keydown)="handleKeydown($event)"
+  tabindex="0"
+/>
+<nav class="menu">
+  <ul>
+    <li>
+      <a routerLink="/landing" (click)="toggleMenu()">Inicio</a>
+    </li>
+    @if (this.isLoggedIn) {
+    <li>
+      <a routerLink="/home" (click)="toggleMenu()">Perfil</a>
+    </li>
+    <li>
+      <a (click)="logout()" (keydown)="keyboardLogout($event)" tabindex="0"
+        >Salir</a
+      >
+    </li>
+    } @else {
+    <li>
+      <a routerLink="/user-login" (click)="toggleMenu()">Entrar</a>
+    </li>
+    <li>
+      <a routerLink="/user-register" (click)="toggleMenu()">Registrarse</a>
+    </li>
+    }
+  </ul>
+</nav>
+} @else {
+<img
+  src="../../../assets/burger-menu.svg"
+  alt="Menú de la aplicación"
+  aria-label="app-menu"
+  width="50px"
+  class="burger-icon"
+  (click)="toggleMenu()"
+  (keydown)="handleKeydown($event)"
+  tabindex="0"
+/>
+}

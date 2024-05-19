@@ -4,6 +4,7 @@
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
+  margin: 0;
 }
 
 .register-box {
@@ -49,15 +50,21 @@ p {
 }
 
 .register-box input {
-  width: 100%;
+  width: 90%;
   padding: 8px;
-  margin: 10px 0;
+  margin: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #dddddd;
 }
 
+.register-box img {
+  padding-inline: 25%;
+  margin-top: 1rem;
+}
+
 .register-box button {
+  margin-top: 1rem;
   width: 100%;
   padding: 10px;
   border: none;
@@ -65,10 +72,15 @@ p {
   color: black;
   font-weight: bold;
   text-transform: uppercase;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
 .register-box button:hover {
   background-color: #e6ac00;
+}
+.register-error {
+  font-size: 18px;
+  color: red;
+  text-align: center;
 }

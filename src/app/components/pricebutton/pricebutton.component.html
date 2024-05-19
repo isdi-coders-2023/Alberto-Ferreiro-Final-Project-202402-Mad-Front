@@ -1,0 +1,9 @@
+<div
+  class="priceButton"
+  [ngClass]="getPriceClass(card.name)"
+  (click)="goToPrice()"
+  (keydown)="handleKeydownPrice($event)"
+  tabindex="0"
+>
+  Calcular Precio
+</div>

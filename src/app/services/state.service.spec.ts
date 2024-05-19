@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
-import { StateService } from './state.service';
 import { of, throwError } from 'rxjs';
+import { StateService } from './state.service';
 import { UsersRepoService } from './users.repo.service';
 import { PoliciesRepoService } from './policies.repo.service';
 
@@ -19,19 +18,42 @@ describe('StateService', () => {
       return of({ id, name: 'Axl', age: 36 });
     }),
   };
+
   const fakePolicies = {
     getPolicies: jasmine.createSpy('getPolicies').and.returnValue(
       of([
         {
-          policyNumber: '01',
+          policyNumber: 1,
           carMake: 'Ford',
           carModel: 'Siesta',
           plateNumber: 'XYZ123',
           carAge: 5,
+          id: 'qwerty',
+          policyType: 'auto',
+          userId: 'asdf',
+          claims: [],
         },
       ])
     ),
+    getUserPolicies: jasmine
+      .createSpy('getUserPolicies')
+      .and.callFake((userId: string) => {
+        return of([
+          {
+            policyNumber: 2,
+            carMake: 'Toyota',
+            carModel: 'Corolla',
+            plateNumber: 'ABC123',
+            carAge: 3,
+            id: 'userPolicyId',
+            policyType: 'auto',
+            userId,
+            claims: [],
+          },
+        ]);
+      }),
   };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -60,10 +82,12 @@ describe('StateService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
   it('should check for token in localStorage and set login if token exists', () => {
     service.checkPersistence();
     expect(localStorage.getItem).toHaveBeenCalledWith('Umbrella');
   });
+
   it('should clear the session on logout', (done) => {
     service.setLogout();
     expect(localStorage.removeItem).toHaveBeenCalledWith('Umbrella');
@@ -74,17 +98,44 @@ describe('StateService', () => {
       done();
     });
   });
+
   it('should fetch policies and update state', (done) => {
     service.getPolicies();
     expect(fakePolicies.getPolicies).toHaveBeenCalled();
     service.getState().subscribe((state) => {
       expect(state.policies).toEqual([
         {
-          policyNumber: '01',
+          policyNumber: 1,
           carMake: 'Ford',
           carModel: 'Siesta',
           plateNumber: 'XYZ123',
           carAge: 5,
+          id: 'qwerty',
+          policyType: 'auto',
+          userId: 'asdf',
+          claims: [],
+        },
+      ]);
+      done();
+    });
+  });
+
+  it('should fetch user policies and update state', (done) => {
+    const userId = 'user123';
+    service.getUserPolicies(userId);
+    expect(fakePolicies.getUserPolicies).toHaveBeenCalledWith(userId);
+    service.getState().subscribe((state) => {
+      expect(state.policies).toEqual([
+        {
+          policyNumber: 2,
+          carMake: 'Toyota',
+          carModel: 'Corolla',
+          plateNumber: 'ABC123',
+          carAge: 3,
+          id: 'userPolicyId',
+          policyType: 'auto',
+          userId: 'user123',
+          claims: [],
         },
       ]);
       done();

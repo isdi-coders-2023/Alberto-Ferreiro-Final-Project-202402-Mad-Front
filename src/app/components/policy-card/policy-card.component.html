@@ -1,0 +1,35 @@
+@if(policy){
+<div *ngIf="policy" class="policy-card">
+  >
+  <p class="policy-number" [ngClass]="getPriceClass(policy.policyType)">
+    Nº de póliza: {{ policy.policyNumber }}
+  </p>
+  <div class="icon">
+    @if(policy.policyType === 'auto'){
+    <img src="../../../assets/car-icon.svg" alt="Auto Icon" />} @else {
+    <img src="../../../assets/motorbike-icon.svg" alt="Motorbike Icon" />
+    }
+  </div>
+  <h2>{{ policy.carMake }} {{ policy.carModel }}</h2>
+
+  <p class="plate">Matrícula: {{ policy.plateNumber }}</p>
+
+  <div class="separator"></div>
+  <ul class="policy-features">
+    <li>
+      <p class="car-age">Antigüedad del vehículo: {{ policy.carAge }} años</p>
+    </li>
+    <li>
+      <p class="claims">Siniestros: {{ policy.claims.length }}</p>
+    </li>
+  </ul>
+
+  <button
+    class="view-button"
+    [ngClass]="getPriceClass(policy.policyType)"
+    (click)="viewPolicy()"
+  >
+    Ver Póliza
+  </button>
+</div>
+}

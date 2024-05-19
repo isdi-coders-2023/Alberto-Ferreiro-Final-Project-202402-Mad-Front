@@ -1,0 +1,8 @@
+<ul class="product-list">
+  @for (item of productData; track item.name) {
+  <li>
+    <app-product-card [card]="item"></app-product-card>
+  </li>
+
+  }
+</ul>

@@ -1,0 +1,29 @@
+<div class="home-container">
+  <h2>Mis Pólizas</h2>
+  <div class="divider"></div>
+  <app-policy-list></app-policy-list>
+  <button class="new-policy" (click)="createPolicy()">
+    Contratar nueva póliza
+  </button>
+  @if(user) {
+  <div class="user-info">
+    <h2>Mis datos personales</h2>
+    <div class="divider"></div>
+
+    <p>
+      Nombre: <span>{{ user.name }}</span>
+    </p>
+
+    <p>
+      Email: <span>{{ user.email }}</span>
+    </p>
+
+    <p>
+      Id: <span>{{ user.id }}</span>
+    </p>
+
+    <p>Cuenta Bancaria: {{ user.bankAccount }}</p>
+    <button class="update-data">Cambiar mis datos</button>
+  </div>
+  }
+</div>

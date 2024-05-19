@@ -8,18 +8,20 @@ import {
 import { StateService } from '../../services/state.service';
 import { UserLoginDto } from '../../models/user.model';
 import { UsersRepoService } from '../../services/users.repo.service';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
 
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export default class LoginComponent {
   loginForm: FormGroup;
-  passCheck: boolean = true;
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -29,20 +31,12 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      confirmPassword: ['', Validators.required],
     });
   }
 
   onLogin() {
     if (this.loginForm.valid) {
-      const { email, password, confirmPassword } = this.loginForm.value;
-      if (password !== confirmPassword) {
-        this.passCheck = false;
-        console.log('Las contraseñas no coinciden');
-        return;
-      } else {
-        this.passCheck = true;
-      }
+      const { email, password } = this.loginForm.value;
 
       const userLogin: UserLoginDto = { email, password };
 
@@ -53,9 +47,11 @@ export class LoginComponent {
         error: (err) => {
           console.error('Login error:', err);
           this.state.setLoginState('error');
+          this.errorMessage = 'Login failed. Please check your credentials.';
         },
       });
     } else {
+      this.errorMessage = 'Please enter valid email and password.';
       console.log('Datos incorrectos');
     }
   }

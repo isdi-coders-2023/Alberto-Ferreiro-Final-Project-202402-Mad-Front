@@ -1,0 +1,28 @@
+.logout-screen {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.logout-screen h1 {
+  color: #333;
+}
+
+.logout-screen a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffbd00;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+.logout-screen a:hover {
+  background-color: #e6ac00;
+}
+.logout-screen h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

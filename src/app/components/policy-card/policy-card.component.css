@@ -1,0 +1,76 @@
+.policy-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5rem;
+  margin-inline: 10%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #d9d9d9;
+}
+
+.policy-number {
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0.7rem;
+  border-radius: 15px;
+  position: relative;
+  top: -17px;
+  left: -17px;
+  margin-right: 10rem;
+  box-shadow: 0px 5px 2px darkgray;
+}
+
+.icon {
+  margin: 8px 0;
+  font-size: 1.5em;
+}
+
+.icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.car-age,
+.claims {
+  margin: 4px 0;
+}
+
+.plate {
+  margin: 2px 0;
+  font-size: small;
+}
+
+.separator {
+  background-color: white;
+  color: white;
+  padding: 1px;
+  margin-block: 1rem;
+}
+
+.policy-features {
+  margin-bottom: 3rem;
+}
+
+.view-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.view-button:hover {
+  background-color: #e6ac00;
+}
+
+.auto {
+  background-color: #c4b1d4;
+}
+
+.moto {
+  background-color: #ffd2d7;
+}

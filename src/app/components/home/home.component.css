@@ -1,0 +1,50 @@
+.home-container {
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+}
+
+.home-container h2 {
+  color: #333;
+  text-align: center;
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.user-info p {
+  margin: 10px 0;
+}
+
+.divider {
+  height: 2px;
+  background-color: #ffbd00;
+  margin: 10px 0;
+}
+.home-container button {
+  background-color: #ffbd00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.user-info button:hover {
+  background-color: #e6ac00;
+}
+
+.show-pass {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+
+.update-data,
+.new-policy {
+  margin-inline: 25%;
+  margin-block: 1rem;
+  padding-block: 0.6rem;
+  padding-inline: 2rem;
+  border-radius: 15px;
+}

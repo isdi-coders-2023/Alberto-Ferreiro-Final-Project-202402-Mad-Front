@@ -1,0 +1,7 @@
+<ul class="policy-list">
+  @for (policy of policies; track policy.id) {
+  <li>
+    <app-policy-card [policy]="policy"></app-policy-card>
+  </li>
+  }
+</ul>

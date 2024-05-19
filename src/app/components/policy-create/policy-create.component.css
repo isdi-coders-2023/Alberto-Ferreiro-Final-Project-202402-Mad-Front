@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  background-color: #dddddd;
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  margin: 0;
+}
+
+.policy-create-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.policy-create-box h1 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+.policy-create-box .welcome {
+  color: #ffbd00;
+  text-align: center;
+  font-size: 16px;
+}
+
+.policy-create-box .divider {
+  height: 2px;
+  background-color: #ffbd00;
+  margin: 10px 0;
+}
+
+.policy-create-box input {
+  width: 90%;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #dddddd;
+}
+
+.policy-create-box select {
+  width: 95%;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #dddddd;
+}
+
+.policy-create-box img {
+  padding-inline: 25%;
+  margin-top: 1rem;
+}
+
+.policy-create-box button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #ffbd00;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.policy-create-box button:hover {
+  background-color: #e6ac00;
+}
+.priceDisplay {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.priceDisplay p {
+  color: #333;
+  font-size: 18px;
+}
+
+.login-message {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-message p {
+  color: #333;
+  font-size: 16px;
+}
+
+.login-message a {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 10px 15px;
+  background-color: #ffbd00;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.login-message a:hover {
+  background-color: #e6ac00;
+}
