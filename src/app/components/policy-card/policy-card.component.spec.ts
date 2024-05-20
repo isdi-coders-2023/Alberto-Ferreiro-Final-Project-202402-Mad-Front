@@ -87,9 +87,9 @@ describe('PolicyCardComponent', () => {
     );
   });
 
-  it('should navigate to update-policy route when viewPolicy is called', () => {
+  it('should navigate to view-policy route when viewPolicy is called', () => {
     const navigateSpy = spyOn(router, 'navigate');
     component.viewPolicy();
-    expect(navigateSpy).toHaveBeenCalledWith(['/update-policy', mockPolicy.id]);
+    expect(navigateSpy).toHaveBeenCalledWith(['/view-policy', mockPolicy.id]);
   });
 });

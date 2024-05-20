@@ -1,0 +1,53 @@
+.claim-list-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.divider {
+  height: 2px;
+  background-color: #ffbd00;
+  margin: 10px 0;
+}
+
+.claim-card {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.claim-card p {
+  margin: 5px 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.claim-card span {
+  font-weight: bold;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #ffbd00;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.claimImage {
+  width: 50vh;
+}

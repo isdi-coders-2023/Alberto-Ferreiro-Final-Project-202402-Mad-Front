@@ -1,0 +1,44 @@
+<div class="view-policy-box">
+  <h1>Accesos directos</h1>
+  <div class="icons">
+    <img
+      src="../../../assets/icon-talleres-R.svg"
+      alt="Icono de ver partes"
+      (click)="viewClaims()"
+      (keydown)="keyboardViewClaims($event)"
+      tabindex="0"
+    />
+    <img
+      src="../../../assets/icon-dar-parte-A.svg"
+      alt="Icono de dar partes"
+      (click)="newClaim('crash')"
+      (keydown)="keyboardNewClaimCrash($event)"
+      tabindex="0"
+    />
+    <img
+      src="../../../assets/icon-grua-mantenimiento-R.svg"
+      alt="Icono de pedir asistencia"
+      (click)="newClaim('road')"
+      (keydown)="keyboardNewClaimRoad($event)"
+      tabindex="0"
+    />
+  </div>
+  <div class="divider"></div>
+  @if(policy){
+  <h2>Su póliza número: {{ policy.policyNumber }}</h2>
+
+  <div class="policy-details">
+    <p><span>Tipo de póliza:</span> {{ policy.policyType }}</p>
+    <p><span>Marca:</span> {{ policy.carMake }}</p>
+    <p><span>Modelo:</span> {{ policy.carModel }}</p>
+    <p><span>Antigüedad del vehículo:</span> {{ policy.carAge }} años</p>
+    <p><span>Matrícula:</span> {{ policy.plateNumber }}</p>
+    <p><span>Número de siniestros:</span> {{ policy.claims.length }}</p>
+  </div>
+
+  <button (click)="editPolicy()">Editar Póliza</button>}
+
+  <a (click)="backHome()" (keydown)="keyboardHome($event)" tabindex="0"
+    >Volver a Inicio</a
+  >
+</div>

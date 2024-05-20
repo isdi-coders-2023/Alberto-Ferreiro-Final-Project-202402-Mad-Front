@@ -1,0 +1,22 @@
+<div class="claims-list">
+  <h2>Partes</h2>
+  <div *ngIf="claims.length === 0">No claims found.</div>
+
+  <ul *ngIf="claims.length > 0">
+    @for (claim of claims; track claim.id){
+    <li>
+      <p>Claim Number: {{ claim.claimNumber }}</p>
+      <p>Status: {{ claim.status }}</p>
+      <p>Tipo: {{ claim.type }}</p>
+      <p>Teléfono: {{ claim.phoneNumber }}</p>
+      <p>Dirección: {{ claim.address }}</p>
+      <img
+        *ngIf="claim.imageUrl"
+        [src]="claim.imageUrl"
+        alt="Claim Image"
+        class="claimImage"
+      />
+    </li>
+    }
+  </ul>
+</div>

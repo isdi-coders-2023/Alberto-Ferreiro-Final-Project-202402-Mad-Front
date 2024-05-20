@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -55,6 +60,7 @@ describe('PolicyCreateComponent', () => {
     fixture = TestBed.createComponent(PolicyCreateComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
+    spyOn(router, 'navigate');
     fixture.detectChanges();
   });
 
@@ -102,7 +108,7 @@ describe('PolicyCreateComponent', () => {
     expect(component.policyForm.valid).toBeFalse();
   });
 
-  it('should call createPolicy method of PoliciesRepoService on form submit', () => {
+  it('should call createPolicy method of PoliciesRepoService on form submit', fakeAsync(() => {
     component.policyForm.patchValue({
       carMake: 'Toyota',
       carModel: 'Corolla',
@@ -111,7 +117,7 @@ describe('PolicyCreateComponent', () => {
       policyType: 'auto',
     });
     component.onCreatePolicy();
-
+    tick();
     expect(mockPoliciesRepoService.createPolicy).toHaveBeenCalledWith({
       policyType: 'auto',
       carMake: 'Toyota',
@@ -120,11 +126,9 @@ describe('PolicyCreateComponent', () => {
       plateNumber: 'ABC123',
       userId: 'user123',
     });
-  });
+  }));
 
-  it('should navigate to /landing after successful policy creation', () => {
-    spyOn(router, 'navigate');
-
+  it('should navigate to /landing after successful policy creation', fakeAsync(() => {
     component.policyForm.patchValue({
       carMake: 'Toyota',
       carModel: 'Corolla',
@@ -133,7 +137,7 @@ describe('PolicyCreateComponent', () => {
       policyType: 'auto',
     });
     component.onCreatePolicy();
-
+    tick();
     expect(router.navigate).toHaveBeenCalledWith(['/landing']);
-  });
+  }));
 });

@@ -20,3 +20,11 @@ export type CreatePolicyDto = {
   carAge: number;
   userId: string;
 };
+
+export type UpdatePolicyDto = {
+  carMake?: string;
+  carModel?: string;
+  carAge?: number;
+  plateNumber?: string;
+  policyType?: string;
+};

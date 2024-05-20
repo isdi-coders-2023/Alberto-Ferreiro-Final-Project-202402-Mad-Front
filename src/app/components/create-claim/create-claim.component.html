@@ -1,0 +1,21 @@
+<div class="create-claim-box">
+  <h1>Abrir parte</h1>
+  <div class="divider"></div>
+
+  <form [formGroup]="createClaimForm" (ngSubmit)="onCreateClaim()">
+    <label for="phoneNumber">Teléfono:</label>
+    <input id="phoneNumber" formControlName="phoneNumber" type="text" />
+
+    <label for="address">Dirección:</label>
+    <input id="address" formControlName="address" type="text" />
+
+    <label for="image">Imagen:</label>
+    <input id="image" type="file" (change)="onFileChange($event)" />
+
+    <button type="submit">Abrir</button>
+  </form>
+
+  <a (click)="onClick()" (keydown)="keyboardNavigate($event)" tabindex="0"
+    >Volver a la Póliza</a
+  >
+</div>

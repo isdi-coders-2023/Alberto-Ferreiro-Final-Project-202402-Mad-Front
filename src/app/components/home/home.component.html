@@ -21,9 +21,14 @@
     <p>
       Id: <span>{{ user.id }}</span>
     </p>
+    <p>
+      Edad: <span>{{ user.age }}</span>
+    </p>
+    <p>
+      Año de obtención del permiso: <span>{{ user.licenseYear }}</span>
+    </p>
 
-    <p>Cuenta Bancaria: {{ user.bankAccount }}</p>
-    <button class="update-data">Cambiar mis datos</button>
+    <button class="update-data" (click)="editUser()">Cambiar mis datos</button>
   </div>
   }
 </div>

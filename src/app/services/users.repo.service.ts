@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { UserLoginDto, UserRegisterDto } from '../models/user.model';
+import {
+  UpdateUserDto,
+  User,
+  UserLoginDto,
+  UserRegisterDto,
+} from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +23,14 @@ export class UsersRepoService {
     console.log('en el repo:', data);
     return this.http.post(this.url + '/register', data);
   }
-  getById(id: string) {
-    return this.http.get(this.url + '/' + id);
+  getById(id: string): Observable<User> {
+    return this.http.get<User>(this.url + '/' + id);
+  }
+  getDetailsById(id: string): Observable<User> {
+    return this.http.get<User>(this.url + '/' + id + '/details');
+  }
+
+  updateUser(id: string, data: UpdateUserDto) {
+    return this.http.patch<User>(this.url + '/' + id, data);
   }
 }

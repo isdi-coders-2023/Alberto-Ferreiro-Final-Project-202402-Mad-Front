@@ -23,3 +23,11 @@ export type User = {
   bankAccount: string;
   policies: Policy[];
 };
+
+export type UpdateUserDto = {
+  name?: string;
+  email?: string;
+  age?: number;
+  licenseYear?: string;
+  bankAccount?: string;
+};

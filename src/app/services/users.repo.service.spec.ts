@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { UsersRepoService } from './users.repo.service';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +10,7 @@ describe('RepoService', () => {
     get: jasmine.createSpy('get').and.returnValue(of()),
     post: jasmine.createSpy('post').and.returnValue(of()),
   };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -27,19 +27,18 @@ describe('RepoService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
   it('getById should return expected data on successful call', () => {
-    const mockResponse: User[] = [
-      {
-        id: '1',
-        name: 'Pepe',
-        email: 'cara@papa.com',
-        password: '12345',
-        age: 36,
-        licenseYear: 2004,
-        bankAccount: '234-45',
-        policies: [],
-      },
-    ];
+    const mockResponse: User = {
+      id: '1',
+      name: 'Pepe',
+      email: 'cara@papa.com',
+      password: '12345',
+      age: 36,
+      licenseYear: 2004,
+      bankAccount: '234-45',
+      policies: [],
+    };
     httpClientMock.get.and.returnValue(of(mockResponse));
 
     service.getById('1').subscribe({
@@ -50,11 +49,13 @@ describe('RepoService', () => {
 
     expect(httpClientMock.get).toHaveBeenCalledWith(service.url + '/1');
   });
+
   it('getById should be called with the right parameters', () => {
     service.getById('1').subscribe();
 
     expect(httpClientMock.get).toHaveBeenCalledWith(service.url + '/1');
   });
+
   describe('login', () => {
     it('should send POST request with correct credentials', () => {
       const mockLoginData: UserLoginDto = {
@@ -77,11 +78,9 @@ describe('RepoService', () => {
       );
     });
   });
+
   describe('register', () => {
     it('should send POST request with FormData', () => {
-      const mockFormData = new FormData();
-      mockFormData.append('email', 'pepe@pepito.com');
-      mockFormData.append('password', 'newpassword');
       const mockRegistrar = {
         name: 'Axl',
         email: 'test@mail.com',
