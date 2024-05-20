@@ -1,0 +1,82 @@
+.view-policy-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.view-policy-box h1 {
+  color: #333;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-block: 1rem;
+}
+
+.view-policy-box .icons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.view-policy-box .icons img {
+  width: 40px;
+  height: 40px;
+}
+
+.view-policy-box .divider {
+  height: 2px;
+  background-color: #ffbd00;
+  margin: 10px 0;
+}
+
+.view-policy-box h2 {
+  color: #333;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-block: 1rem;
+}
+
+.view-policy-box .policy-details {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.view-policy-box .policy-details p {
+  margin-bottom: 10px;
+}
+
+.view-policy-box .policy-details span {
+  font-weight: bold;
+}
+
+.view-policy-box button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #ffbd00;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.view-policy-box button:hover {
+  background-color: #e6ac00;
+}
+
+.view-policy-box a {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

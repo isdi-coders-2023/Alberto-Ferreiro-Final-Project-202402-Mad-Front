@@ -1,0 +1,47 @@
+<div class="edit-user-box">
+  <h1>Editar Usuario</h1>
+  <div class="divider"></div>
+
+  <form [formGroup]="editUserForm" (ngSubmit)="onUpdateUser()">
+    <input formControlName="name" type="text" placeholder="Nombre" />
+    <input formControlName="email" type="email" placeholder="Email" />
+    <input formControlName="age" type="number" placeholder="Edad" min="0" />
+    <input
+      formControlName="licenseYear"
+      type="number"
+      placeholder="Año de obtención del carnet"
+      min="1900"
+    />
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Contraseña"
+    />
+    <input
+      formControlName="bankAccount"
+      type="text"
+      placeholder="Cuenta Bancaria"
+    />
+    <button type="submit">Cambiar</button>
+  </form>
+
+  <a
+    (click)="toggleBankAccountVisibility()"
+    (keydown)="keyboardBAToggle($event)"
+    tabindex="0"
+    class="toggle-bank-account"
+  >
+    Mostrar cuenta bancaria actual
+  </a>
+  <p *ngIf="showBankAccount">Cuenta Bancaria actual: {{ user.bankAccount }}</p>
+
+  <a
+    (click)="backHome()"
+    (keydown)="keyboardHome($event)"
+    tabindex="0"
+    class="goBackButton"
+    >Volver</a
+  >
+
+  <div class="divider"></div>
+</div>

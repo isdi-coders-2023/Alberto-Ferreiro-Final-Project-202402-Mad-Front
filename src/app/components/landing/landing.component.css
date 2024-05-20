@@ -3,16 +3,19 @@
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
-  h2 {
-    padding-block: 0.5rem;
-    margin-inline: 3rem;
-    font-weight: 200;
-  }
-  p {
-    margin-inline: 25%;
-    padding-bottom: 0.5rem;
-  }
 }
+
+.hero h2 {
+  padding-block: 0.5rem;
+  margin-inline: 3rem;
+  font-weight: 200;
+}
+
+.hero p {
+  margin-inline: 25%;
+  padding-bottom: 0.5rem;
+}
+
 .banner-img,
 .app-hook {
   width: 100%;
@@ -27,4 +30,40 @@
 .download-links {
   display: flex;
   justify-content: space-around;
+}
+
+@media (min-width: 600px) {
+  .hero,
+  .app-hook {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    text-align: left;
+    padding: 40px;
+  }
+
+  .hero h2 {
+    margin-inline: 0;
+  }
+
+  .hero p {
+    margin-inline: 0;
+    padding-inline: 15%;
+  }
+
+  .app-hook {
+    text-align: left;
+    padding: 40px;
+  }
+
+  .banner-img {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  .download-links {
+    justify-content: flex-start;
+  }
 }

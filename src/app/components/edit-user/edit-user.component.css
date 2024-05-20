@@ -1,0 +1,69 @@
+.edit-user-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-user-box h1 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.edit-user-box .divider {
+  height: 2px;
+  background-color: #ffbd00;
+  margin: 10px 0;
+}
+
+.edit-user-box input {
+  width: 90%;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #dddddd;
+}
+
+.edit-user-box button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #ffbd00;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.edit-user-box button:hover {
+  background-color: #e6ac00;
+}
+
+.goBackButton {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+}
+.toggle-bank-account {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle-bank-account:hover {
+  text-decoration: none;
+}

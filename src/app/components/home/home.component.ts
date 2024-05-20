@@ -25,4 +25,7 @@ export default class HomeComponent implements OnInit {
   createPolicy() {
     this.router.navigate(['/create-policy']);
   }
+  editUser() {
+    this.router.navigate(['/edit-user', this.user.id]);
+  }
 }

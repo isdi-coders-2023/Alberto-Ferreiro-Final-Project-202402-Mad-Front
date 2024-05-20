@@ -43,6 +43,35 @@ export const routes: Routes = [
     title: 'Umbrella: Logout',
     loadComponent: () => import('./components/home/home.component'),
   },
+  {
+    path: 'view-policy/:id',
+    title: 'Policy Detail',
+    loadComponent: () =>
+      import('./components/view-policy/view-policy.component'),
+  },
+  {
+    path: 'edit-policy/:id',
+    title: 'Policy Update',
+    loadComponent: () =>
+      import('./components/edit-policy/edit-policy.component'),
+  },
+  {
+    path: 'edit-user/:id',
+    title: 'User Update',
+    loadComponent: () => import('./components/edit-user/edit-user.component'),
+  },
+  {
+    path: 'claims/:policyId',
+    title: 'Policy Claims',
+    loadComponent: () => import('./components/claim-list/claim-list.component'),
+  },
+
+  {
+    path: 'create-claim/:policyId/:claimType',
+    title: 'New Claim',
+    loadComponent: () =>
+      import('./components/create-claim/create-claim.component'),
+  },
 
   { path: '', pathMatch: 'full', redirectTo: 'landing' },
   { path: '**', redirectTo: 'error-page' },

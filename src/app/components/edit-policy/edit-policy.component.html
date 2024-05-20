@@ -1,0 +1,38 @@
+<div class="edit-policy-box">
+  <h1>Editar Póliza</h1>
+  <div class="divider"></div>
+
+  <form [formGroup]="editPolicyForm" (ngSubmit)="onUpdatePolicy()">
+    <select formControlName="policyType">
+      <option value="" disabled selected>Selecciona tipo de póliza</option>
+      <option value="auto">Auto</option>
+      <option value="moto">Moto</option>
+    </select>
+    <input formControlName="carMake" type="text" placeholder="Marca" />
+    <input formControlName="carModel" type="text" placeholder="Modelo" />
+    <input
+      formControlName="carAge"
+      type="number"
+      placeholder="Antigüedad del vehículo"
+      min="0"
+    />
+    <input formControlName="plateNumber" type="text" placeholder="Matrícula" />
+    <button type="submit">Cambiar</button>
+  </form>
+  <a
+    (click)="backHome()"
+    (keydown)="keyboardHome($event)"
+    tabindex="0"
+    class="goBackButton"
+    >Volver</a
+  >
+
+  <div class="divider"></div>
+  <a
+    (click)="onDeletePolicy()"
+    (keydown)="keyboardDelete($event)"
+    tabindex="0"
+    class="cancel-link"
+    >Quiero cancelar mi póliza</a
+  >
+</div>

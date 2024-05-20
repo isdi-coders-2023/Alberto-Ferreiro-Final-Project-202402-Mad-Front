@@ -16,7 +16,7 @@ export class PolicyCardComponent {
   constructor(private router: Router) {}
 
   viewPolicy() {
-    this.router.navigate(['/update-policy', this.policy.id]);
+    this.router.navigate(['/view-policy', this.policy.id]);
   }
   getPriceClass(type: string): string {
     switch (type) {

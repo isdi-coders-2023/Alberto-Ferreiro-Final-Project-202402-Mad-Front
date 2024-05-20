@@ -1,5 +1,3 @@
-import { Policy } from './policy.model';
-
 export type Claim = {
   id: string;
   policyId: string;
@@ -9,5 +7,5 @@ export type Claim = {
   phoneNumber: string;
   address: string;
   claimNumber: number;
-  policy: Policy;
+  imageUrl?: string;
 };
