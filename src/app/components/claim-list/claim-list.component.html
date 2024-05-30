@@ -1,6 +1,9 @@
 <div class="claims-list">
   <h2>Partes</h2>
-  <div *ngIf="claims.length === 0">No claims found.</div>
+  <div class="divider"></div>
+  <div *ngIf="claims.length === 0" class="no-claims">
+    <p>No se encontraron partes.</p>
+  </div>
 
   <ul *ngIf="claims.length > 0">
     @for (claim of claims; track claim.id){

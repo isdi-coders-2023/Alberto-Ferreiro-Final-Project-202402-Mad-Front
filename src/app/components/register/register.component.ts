@@ -8,11 +8,12 @@ import {
 import { UsersRepoService } from '../../services/users.repo.service';
 import { StateService } from '../../services/state.service';
 import { UserRegisterDto } from '../../models/user.model';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -23,7 +24,8 @@ export default class RegisterComponent {
   constructor(
     private builder: FormBuilder,
     private repo: UsersRepoService,
-    protected state: StateService
+    protected state: StateService,
+    private router: Router
   ) {
     this.registerForm = this.builder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -56,6 +58,7 @@ export default class RegisterComponent {
         next: (user) => {
           console.log('Usuario creado:', user);
           this.registryError = false;
+          this.router.navigate(['/user-login']);
         },
         error: (err) => {
           this.registryError = true;
